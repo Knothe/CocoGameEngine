@@ -10,6 +10,7 @@ workspace "KnothEngine"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+-- Include directories relative to root folder (solution directory)
 IncludeDir = {}
 IncludeDir["GLFW"] = "KnothEngine/vendor/GLFW/include"
 
@@ -104,15 +105,15 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines "KNOTH_DEBUG"
-		buildoptions "/MDd"
 		symbols "On"
+		buildoptions "/MDd"
 
 	filter "configurations:Release"
 		defines "KNOTH_RELEASE"
-		buildoptions "/MD"
 		optimize "On"
+		buildoptions "/MD"
 
 	filter "configurations:Dist"
 		defines "KNOTH_DIST"
-		buildoptions "/MD"
 		optimize "On"
+		buildoptions "/MD"

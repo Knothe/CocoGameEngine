@@ -1,4 +1,4 @@
-#pragma once 
+#pragma once
 #include <KnothEngine.h>
 
 class Sandbox : public Knoth::Application {

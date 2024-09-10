@@ -18,8 +18,8 @@ namespace Knoth {
 		EventCategoryKeyboard = BIT(2),
 		EventCategoryMouse = BIT(3),
 		EventCategoryMouseButton = BIT(4)
-	};
-	 
+	}; 
+
 #define EVENT_CLASS_TYPE(type) static EventType GetStaticType() { return EventType::##type; }\
 								virtual EventType GetEventType() const override { return GetStaticType(); }\
 								virtual const char* GetName() const override { return #type; }
@@ -35,8 +35,27 @@ namespace Knoth {
 
 		inline bool IsInCategory(EventCategory category) {
 			return GetCategoryFlags() & category;
-		}
+		} 
 	protected:
 		bool m_Handled = false;
 	};
+
+	
 }
+
+template<>
+struct std::formatter<Knoth::Event> {
+	constexpr auto parse(auto& ctx) {
+		auto it = ctx.begin();
+		if (it == ctx.end())
+			return it;
+		if (it != ctx.end() && *it != '}') {
+			throw std::format_error("Invalid ARGS-Event");
+		}
+		return it;
+	}
+
+	auto format(const Knoth::Event& p, auto& ctx) const {
+		return std::format_to(ctx.out(), "{}", p.ToString());
+	}
+};

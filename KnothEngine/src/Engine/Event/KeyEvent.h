@@ -1,45 +1,49 @@
 #pragma once
-#include "knothpch.h"
-#include "Engine/Core.h"
+
 #include "Event.h"
 
 namespace Knoth {
 	class KNOTH_API KeyEvent : public Event {
 	public:
-		inline int GetKeyCode() { return _keyCode; }
+		inline int GetKeyCode() const { return _KeyCode; }
 		EVENT_CLASS_CATEGORY(EventCategoryKeyboard | EventCategoryInput)
-
 	protected:
-		KeyEvent(int keyCode) : _keyCode(keyCode){}
-		int _keyCode;
+		KeyEvent(int keycode) : _KeyCode(keycode){}
+
+		int _KeyCode;
 	};
 
 	class KNOTH_API KeyPressedEvent : public KeyEvent {
 	public:
-		KeyPressedEvent(int keyCode, int repeateCount) 
-			: KeyEvent(keyCode), _repeateCount(repeateCount) {}
+		KeyPressedEvent(int keycode, int repeateCount)
+			: KeyEvent(keycode), _RepeatCount(repeateCount) {}
+
+		inline int GetRepeatCount() const { return _RepeatCount; }
 
 		std::string ToString() const override {
 			std::stringstream ss;
-			ss << "Key Pressed Event: " << _keyCode << "(" << _repeateCount << ")";
+			ss << "KeyPressedEvent: " << _KeyCode << " (" << _RepeatCount << " repeats)";
 			return ss.str();
 		}
 
 		EVENT_CLASS_TYPE(KeyPressed)
-	private:
-		int _repeateCount;
+
+	protected:
+		int _RepeatCount;
 	};
 
 	class KNOTH_API KeyReleasedEvent : public KeyEvent {
 	public:
-		KeyReleasedEvent(int keyCode) : KeyEvent(keyCode){}
+		KeyReleasedEvent(int keycode)
+			: KeyEvent(keycode) {}
 
-		std::string ToString() const override {
+		std::string ToString()const override {
 			std::stringstream ss;
-			ss << "Key Released Event: " << _keyCode;
+			ss << "KeyPressedEvent: " << _KeyCode;
 			return ss.str();
 		}
 
 		EVENT_CLASS_TYPE(KeyReleased)
+
 	};
 }

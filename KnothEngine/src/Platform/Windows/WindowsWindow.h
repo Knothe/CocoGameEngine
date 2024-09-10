@@ -16,10 +16,10 @@ namespace Knoth {
 		inline unsigned int GetWidth() const override { return _Data.Width; }
 		inline unsigned int GetHeight() const override { return _Data.Height; }
 
+		// Window attributes
 		inline void SetEventCallback(const EventCallbackFn& callback) override { _Data.EventCallback = callback; }
 		void SetVSync(bool enabled) override;
 		bool IsVSync() const override;
-
 
 	private:
 		virtual void Init(const WindowProps& props);

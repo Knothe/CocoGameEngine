@@ -1,13 +1,12 @@
 #pragma once
-#include "knothpch.h"
-#include "Engine/Core.h"
+
 #include "Event.h"
 
 namespace Knoth {
-	class KNOTH_API MouseMovedEvent : public Event{
+	class KNOTH_API MouseMovedEvent : public Event {
 	public:
-		MouseMovedEvent(int x, int y) 
-			: _MouseX(x), _MouseY(y) {}
+		MouseMovedEvent(float x, float y)
+			: _MouseX(x), _MouseY(y) { }
 
 		inline float GetX() const { return _MouseX; }
 		inline float GetY() const { return _MouseY; }
@@ -19,7 +18,7 @@ namespace Knoth {
 		}
 
 		EVENT_CLASS_TYPE(MouseMoved)
-		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
+			EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
 
 	private:
 		float _MouseX, _MouseY;
@@ -28,7 +27,7 @@ namespace Knoth {
 	class KNOTH_API MouseScrolledEvent : public Event {
 	public:
 		MouseScrolledEvent(float xOffset, float yOffset)
-			: _XOffset(xOffset), _YOffset(yOffset){}
+			: _XOffset(xOffset), _YOffset(yOffset) { }
 
 		inline float GetXOffset() const { return _XOffset; }
 		inline float GetYOffset() const { return _YOffset; }
@@ -40,7 +39,7 @@ namespace Knoth {
 		}
 
 		EVENT_CLASS_TYPE(MouseScrolled)
-		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
+			EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
 
 	private:
 		float _XOffset, _YOffset;
@@ -48,34 +47,38 @@ namespace Knoth {
 
 	class KNOTH_API MouseButtonEvent : public Event {
 	public:
-		inline int GetMouseButton() const { return _button; }
+		inline int GetMouseButton() const { return _Button; }
 		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
 
 	protected:
-		MouseButtonEvent(int button) : _button(button){}
-		int _button;
+		MouseButtonEvent(int button) : _Button(button) { }
+
+		int _Button;
 	};
 
 	class KNOTH_API MouseButtonPressedEvent : public MouseButtonEvent {
 	public:
-		MouseButtonPressedEvent(int button) : MouseButtonEvent(button) {}
+		MouseButtonPressedEvent(int button)
+			: MouseButtonEvent(button) {}
 
 		std::string ToString() const override {
 			std::stringstream ss;
-			ss << "MouseButtonPressedEvent: " << _button;
+			ss << "MouseButtonPressedEvent: " << _Button;
 			return ss.str();
 		}
 
 		EVENT_CLASS_TYPE(MouseButtonPressed)
+
 	};
 
 	class KNOTH_API MouseButtonReleasedEvent : public MouseButtonEvent {
 	public:
-		MouseButtonReleasedEvent(int button) : MouseButtonEvent(button) {}
+		MouseButtonReleasedEvent(int button)
+			: MouseButtonEvent(button) {}
 
 		std::string ToString() const override {
 			std::stringstream ss;
-			ss << "MouseButtonReleasedEvent: " << _button;
+			ss << "MouseButtonPressedEvent: " << _Button;
 			return ss.str();
 		}
 

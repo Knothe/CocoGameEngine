@@ -2,10 +2,10 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>D:\Coco\KnothEngine\bin\Debug-windows-x86_64\KnothEngine\KnothEngine.dll</FullPath>
+      <FullPath>E:\GameDev\SoloDev\KnothEngine\bin\Debug-windows-x86_64\KnothEngine\KnothEngine.dll</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>D:\Coco\KnothEngine\bin\Debug-windows-x86_64\Sandbox\Sandbox.exe</FullPath>
+      <FullPath>E:\GameDev\SoloDev\KnothEngine\bin\Debug-windows-x86_64\Sandbox\Sandbox.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

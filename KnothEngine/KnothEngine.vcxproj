@@ -165,11 +165,12 @@
     <ClInclude Include="src\Engine\Log.h" />
     <ClInclude Include="src\Engine\Window.h" />
     <ClInclude Include="src\KnothEngine.h" />
-    <ClInclude Include="src\knothpch.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
+    <ClInclude Include="src\knothpch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Engine\Application.cpp" />
+    <ClCompile Include="src\Engine\Event\KeyEvent.cpp" />
     <ClCompile Include="src\Engine\Log.cpp" />
     <ClCompile Include="src\knothpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
